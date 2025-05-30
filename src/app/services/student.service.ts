@@ -5,7 +5,7 @@ import { Injectable, input} from '@angular/core';
 })
 export class StudentService {
   private students: string[] = [];
-  private attendace: { [date: string]: string[] } = {};
+  private attendance: { [date: string]: string[] } = {};
 
   constructor() { }
 
@@ -14,16 +14,27 @@ export class StudentService {
   }
 
   addStudent(name: string): void {
-    this.students.push(name);
-  }
-
-  markAttendance(date: string, student: string): void {
-    if (!this.attendace[date]) {
-      this.attendace[date] = [];
+    if(this.students.includes(name)){
+      window.alert("Repeated Name")
     }
-    this.attendace[date].push(student);
+    else
+    {
+      this.students.push(name);
+    }
+  }
+  markAttendance(date: string, student: string): void {
+    if (!this.attendance[date]) {
+      this.attendance[date] = [];
+    }
+    if(this.attendance[date].includes(student))
+      {
+       window.alert("This student is already present")
+      }
+    else{
+    this.attendance[date].push(student);
+    }
   }
 
   getAttendance(date: string): string[] {
-    return this.attendace[date] || [];
+    return this.attendance[date] || [];
   }}

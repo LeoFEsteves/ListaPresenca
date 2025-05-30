@@ -20,8 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./add-student/add-student.module').then( m => m.AddStudentPageModule)
   },
   {
-    path: 'attendace',
-    loadChildren: () => import('./attendace/attendace.module').then( m => m.AttendacePageModule)
+    path: 'attendance',
+    loadChildren: () => import('./attendance/attendance.module').then( m => m.AttendancePageModule)
   },
 ];
 

@@ -1,29 +1,28 @@
 import { Router } from '@angular/router';
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { StudentService } from '../services/student.service';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+
 @Component({
-  selector: 'app-attendace',
-  templateUrl: './attendace.page.html',
-  styleUrls: ['./attendace.page.scss'],
+  selector: 'app-attendance',
+  templateUrl: './attendance.page.html',
+  styleUrls: ['./attendance.page.scss'],
   standalone: false,
   providers: [DatePipe]
 })
-export class AttendacePage {
-
+export class AttendancePage {
   date: string = '';
-
-  presentStudents : String [] = [];
+  presentStudents: String[] = [];
   students: String[] = [];
   studentName = '';
 
-  constructor(private studentService: StudentService, private route: Router, private datePipe: DatePipe ) {
+  constructor(private studentService: StudentService, private route: Router, private datePipe: DatePipe) {
     this.date = this.getCurrentDateTime();
   }
 
   getCurrentDateTime(): any {
     const currentDate = new Date();
-    return this.datePipe.transform(currentDate, 'dd/MM/yyyy HH:mm')
+    return this.datePipe.transform(currentDate, 'dd/MM/yyyy HH:mm');
   }
 
   ionViewWillEnter() {
